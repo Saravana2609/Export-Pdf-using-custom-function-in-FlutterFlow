@@ -1,0 +1,51 @@
+// Automatic FlutterFlow imports
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart'; // Imports other custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
+import 'package:flutter/material.dart';
+// Begin custom action code
+// DO NOT REMOVE OR MODIFY THE CODE ABOVE!
+
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'package:printing/printing.dart';
+
+class RichTextWidget extends pw.StatelessWidget {
+  final pw.TextAlign textAlign;
+  final List<pw.TextSpan> textSpans;
+
+  RichTextWidget({required this.textAlign, required this.textSpans});
+
+  @override
+  pw.Widget build(pw.Context context) {
+    return pw.RichText(
+      textAlign: textAlign,
+      text: pw.TextSpan(
+        children: textSpans,
+      ),
+    );
+  }
+}
+
+Future<void> newPDF() async {
+  final pdf = pw.Document();
+  pdf.addPage(pw.MultiPage(
+    build: (pw.Context context) => 
+  [
+      
+      // Add what you want to describe in pages
+  ],
+  ));
+
+  await Printing.layoutPdf(
+    onLayout: (PdfPageFormat format) async => pdf.save(),
+  );
+}
+
+//Add Dependencies ....
+// 1. pdf: ^3.10.7
+// 2. printing: ^5.11.1
+
